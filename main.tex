@@ -6,6 +6,7 @@
 \usepackage{amssymb}
 \usepackage{amsthm}
 \usepackage{enumitem}
+\usepackage{mathrsfs}
 
 \usepackage{tikz}
 \usepackage{xcolor}
@@ -1003,13 +1004,106 @@ This concept is called the \emph{bulk-boundary correspondence},
 wherein the topology of the bulk Hamiltonian maps to the physics near the boundary of the system.
 This concept can be stated and proven in more generality, for example using $K$-theory and index theory.
 
-\section{Particle-hole symmetry and the symmetry class D}\label{sec:ptcl_hole}
-The 
+\subsection{Particle-hole symmetry}\label{sec:ptcl_hole}
+Certain symmetries constrain the type of Hamiltonians $\mathcal{H}(k)$,
+one of which is the so-called \emph{particle-hole symmetry} (or \emph{charge conjugation} in some cases).\footnote{%
+It should be noted that the concept of particle-hole symmetry is used confusingly across multiple areas of physics.~\cite{zirnbauer_ptcl_hole}
+To avoid any confusion, we only define it in terms of the Bogoliubov-de Gennes Hamiltonian.
+}
+The symmetry action is characterized by the antiunitary transformation $\Psi_k \mapsto \tau^x \Psi_k^\dagger$
+mapping every quasiparticle excitation energy $E$ to one of energy $-E$.
+Equivalently,
+\[
+	\tau^x \mathcal{H}(k)^* \tau^x = -\mathcal{H}(-k).
+\]
+Using the complex conjugation operator $K$ to define the antiunitary operator $\Theta := \tau^x K$,
+the condition can be expressed as
+\[
+	\Theta \mathcal{H}(k) \Theta^{-1} = -\mathcal{H}(-k).
+\]
 
-\hwnote{TODO: \begin{enumerate}
-    \item Particle-hole symmetry and why it is important
-    \item Altland-Zirnbauer classification (D, apparently)
-\end{enumerate}}
+The primary consequence of the particle-hole symmetry is the symmetric energy bands.
+If $\mathcal{H}(k)\ket{u(k)} = E(k)\ket{u(k)}$, then because $E(k) \in \mathbb{R}$,
+\[
+	\mathcal{H}(-k)\Theta\ket{u(k)} = -\Theta\mathcal{H}(k)\ket{u(k)} = -\Theta E(k)\ket{u(k)} = -E(k)\ket{u(k)}.
+\]
+Thus, $E(-k) = -E(k)$, or for each band $E(k)$, there is a corresponding band $-E(-k)$.
+
+For a general $\mathcal{H}(k) = \vec{d}(k) \cdot \vec{\tau}$, this symmetry is equivalent to the constraint
+\[
+	d_x(-k) = -d_x(k),\quad d_y(-k) = -d_y(k)\quad \text{and}\quad d_z(-k) = d_z(k).
+\]
+For the family of maps $S^1 \rightarrow \mathbb{R}^3\setminus\{0\}$ satisfying this property, there are two connected components.
+In our case, two curves are path-connected precisely when they are homotopic,
+that is, continuously deformed from one to another.
+The topological invariant $\nu$ calculated in section~\ref{sec:invar} is a complete homotopic invariant of this space.\footnote{%
+This also explains why only $k=0$ and $\pi/a$ are used to define $\nu$:
+they are the fixed points of the involution $k \mapsto -k$!
+}
+
+Let us state this more rigorously.
+A $d$-dimensional free-fermion system with translational symmetry can be characterized
+by the Bogoliubov-de Gennes Hamiltonian $\mathcal{H}(k)$.
+Here, $k$ lies in the $d$-dimensional Brillouin zone, homeomorphic to the $d$-dimensional torus $T^d$.
+We will only consider gapped Hamiltonians, so let $F$ denote the space of such Hamiltonians.
+For the Kitaev chain, the Brillouin zone is identified with the circle ($T^1 =  S^1$),
+while the space of $2\times 2$ Hamiltonians (up to constant shifts) is naturally homeomorphic to $\mathbb{R}^3\setminus\{0\}$.
+(Here, $\cong$ signifies homeomorphism.)
+The classification of such Hamiltonians, or the topological phases,
+is thus the study of connected components of the family of such maps.
+
+In general, we denote as $[X,Y]$ the homotopic classes of continuous maps $f: X \rightarrow Y$.
+However, we are currently imposing certain conditions on the maps.
+A general method is to define a group $G$ with homeomorphic representations
+\[
+	\rho_X: G \rightarrow \mathrm{Homeo}(X)\quad \text{and} \rho_Y: G \rightarrow \mathrm{Homeo}(Y).
+\]
+We thus impose that these actions must be preserved:
+\[
+	\forall g \in G,\; x \in X.\; f(\rho_X(g)(x)) = \rho_Y(g)(f(x)).
+\]
+Such maps are called \emph{equivariant}, and the homotopic classes of them the \emph{equivariant homotopy} $[X,Y]_G$.
+(Note that despite the notation, the equivariant homotopy depends on the chose group actions on both $X$ and $Y$,
+not just on the abstract group $G$.)
+In our case, the relevant equivariant homotopy is $[T^d, S^2]_{\mathbb{Z}_2}$,
+where $\mathbb{R}^3\setminus\{0\} \simeq S^2$ (homotopy) and can be replaced,
+while $\mathbb{Z}_2$ acts such that $\rho_X(-1)(k) = -k$ and $\rho_Y(-1)_(x, y, z) = (-x, -y, z)$.
+With this, one can calculate $[S^1, S^2]_{\mathbb{Z}_2} \cong \mathbb{Z}_2$,
+which would predict two distinct phases, just as we have calculated.\footnote{%
+For more complicated models, the so-called \emph{classifying space} $F$ is defined differently,
+possibly containing Hamiltonians of different dimensions.
+To accomodate all such microscopic details, one defines two Hamiltonians to be equivalent
+if they differ only by trivial bands:
+\[
+	\mathcal{H}_1 \sim_{st} \mathcal{H}_2 \iff \mathcal{H}_1 \oplus \mathcal{E}_1 \simeq \mathcal{H}_2 \oplus \mathcal{E}_2,
+\]
+where $\mathcal{E}$ denotes Hamiltonians with only trivial bands.
+Let $\mathscr{H}_n$ denote the $n$-dimensional gapped Hamiltonians.
+One defines a natural inclusion map $\iota_n: \mathscr{H}_n \hookrightarrow \mathscr{H}_{n+1}$ by
+\[
+	\iota_n(\mathcal{H}) := \mathcal{H} \oplus \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix},
+\]
+thus defining an increasing chain
+\[
+	\mathscr{H}_1 \hookrightarrow \mathscr{H}_2 \hookrightarrow \mathscr{H}_3 \hookrightarrow \cdots.
+\]
+
+So, to be precise, the relevant topology is $[T^d, F]$, where $F$ denotes the stable limit of this chain,
+together with the appropriate symmetry constraints.
+The \emph{Bott periodicity theorem} states that there are exactly 8 distinct real Bott spaces $R_q$
+and 2 distinct complex Bott spaces $C_q$,
+(Apparently, one has $\Tilde{KO}^{-q}(S^d) \cong \pi_0(R_{q-d})$,
+allowing one to classify phases only using the connected components of these ten Bott spaces.
+\hwnote{What?})
+In fact, only three discrete symmetries --- time reversal, particle-hole, and chirality --- are sufficient
+to completely determine which Bott space is relevant to the given physical system.
+This is called the \emph{Altland-Zirnbauer classification}, of which the Kitaev chain belongs to class D.
+}
+
+Consequently, the classification is largely independent of the microscopic realization.
+Once the system admits a Bogoliubov-de Gennes description with the prescribed symmetry class,
+its topological phase depends only on the corresponding equivariant homotopy class,
+rather than on microscopic quantities such as lattice geometry, hopping amplitudes, or the number of trivial bands.
 
 \printbibliography
 \end{document}
