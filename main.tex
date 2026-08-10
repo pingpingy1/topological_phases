@@ -1161,7 +1161,7 @@ Then, the ground state is described as
 that is, a superposition of vortex-less configurations.
 
 If a star operator $A_s$ acts on the classical state $\ket{s}$,
-then the resulting state is also a classical configuration, with spins on $\star{j}$ flipped.
+then the resulting state is also a classical configuration, with spins on $\star{s}$ flipped.
 Therefore, $c_s$ and $c_{s'}$ must be equal if $s$ and $s'$ can be connected via star operators, i.e.,
 if they lie in a common orbit of the star operators,
 or in topological terms, a common \emph{cohomology class} of the $\mathbb{Z}_2$ 1-form gauge fields over $\Sigma$.
@@ -1190,14 +1190,14 @@ In fact the corresponding \emph{electric Wilson loop operators}
 \]
 defined the loop $l$ connects sites along the edges,
 commute with every $A_s$, meaning these $2g$ operators allow us
-to traverse the degenerate states starting from any one of them.
+to distinguish the degenerate states starting from any one of them.
 
 The above derivation could have started with the $\sigma^x$ basis,
 in which case the \emph{magnetic Wilson loop operators}
 \[
 	W_{l^*}^{(m)} := \prod_{j \in l^*} \sigma_j^x
 \]
-allow the traversal, where the loop $l^*$ connects plaquette centers penetrating the edges.
+allow the complete labeling, where the loop $l^*$ connects plaquette centers penetrating the edges.
 In fact, if $l \cap l^*$ contains a single site, then $W_l^{(e)}$ and $W_{l^*}^{(m)}$ anticommute,
 acting as Pauli operators $X$ and $Z$ on the fourfold degenerate states traversed by them.
 
@@ -1205,13 +1205,13 @@ acting as Pauli operators $X$ and $Z$ on the fourfold degenerate states traverse
 Different energy eigenspaces can be traversed using non-loop path operators.
 That is, for a curve $l$ with boundaries, the electric path operator $W_l^{(e)}$ (defined similarly)
 commutes with all star operators except those at the boundaries, with which it anticommutes.
-Thus, $A_l$ negates the eigenvalues of the star operators at its endpoints,
-raising the energy by $2J_e$.
+Thus, $W_l^{(e)}$ negates the eigenvalues of the star operators at its endpoints,
+raising the energy in total by $4J_e$.
 One says that a site with $A_s = -1$ has an \emph{electric charge} at that site,
-and thus interpret $J_e$ as the excitation energy of a single electric charge.
+and thus interpret $2J_e$ as the excitation energy of a single electric charge.
 (An electric charge cannot be created in isolation, however; it is simply a mental description.)
 Similarly, the magnetic path operator $W_{l^*}^{(m)}$ negates the eigenvalues of $B_p$ at its endpoints,
-creating two vortices or \emph{magnetic charges}, each with excitation energy $J_m$.
+creating two vortices or \emph{magnetic charges}, each with excitation energy $2J_m$.
 
 \printbibliography
 \end{document}
