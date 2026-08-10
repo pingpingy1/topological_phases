@@ -20,6 +20,8 @@
 
 \DeclareMathOperator{\trace}{Tr}
 \DeclareMathOperator{\pfaff}{Pf}
+\renewcommand{\star}[1]{\mathrm{star}\left(#1\right)}
+\DeclareMathOperator{\bdry}{\partial}
 
 \newtheorem{theorem}{Theorem}[section]
 
@@ -1063,7 +1065,7 @@ We thus impose that these actions must be preserved:
 	\forall g \in G,\; x \in X.\; f(\rho_X(g)(x)) = \rho_Y(g)(f(x)).
 \]
 Such maps are called \emph{equivariant}, and the homotopic classes of them the \emph{equivariant homotopy} $[X,Y]_G$.
-(Note that despite the notation, the equivariant homotopy depends on the chose group actions on both $X$ and $Y$,
+(Note that despite the notation, the equivariant homotopy depends on the chosen group actions on both $X$ and $Y$,
 not just on the abstract group $G$.)
 In our case, the relevant equivariant homotopy is $[T^d, S^2]_{\mathbb{Z}_2}$,
 where $\mathbb{R}^3\setminus\{0\} \simeq S^2$ (homotopy) and can be replaced,
@@ -1104,6 +1106,112 @@ Consequently, the classification is largely independent of the microscopic reali
 Once the system admits a Bogoliubov-de Gennes description with the prescribed symmetry class,
 its topological phase depends only on the corresponding equivariant homotopy class,
 rather than on microscopic quantities such as lattice geometry, hopping amplitudes, or the number of trivial bands.
+
+% =========================================
+\section{The two-dimensional toric code}
+The \emph{toric code} system is defined on a cellulation of a surface $\Sigma$.
+We place a spin-$\frac{1}{2}$ on each edge and impose the Hamiltonian
+\[
+	H_T := -J_e \sum_s A_s - J_m \sum_p B_p,
+\]
+where $s$ runs over each vertex and $p$ over each face or \emph{plaquette}.
+The star operators $A_s$ and the plaquette operators $B_p$ are defined as
+\[
+	A_s := \prod_{j \in \star{s}} \sigma_j^x,\quad
+	B_p := \prod_{j \in \bdry{p}} \sigma_j^z.
+\]
+These operators all commute with each other.
+In particular, a star and a plaquette share an even number of edges,
+so the minus signs arising from the anticommutation of $\sigma^x$ and $\sigma^z$ cancel pairwise.
+
+Since $A_s^2 = B_p^2 = I$, the simultaneous eigenspaces of all star and plaquette operators
+are labeled by their eigenvalues $A_s, B_p \in \{\pm 1\}$.
+This labeling is not independent, however, due to the constraints
+\[
+	\prod_s A_s = \prod_p B_p = I,
+\]
+as each edge has exactly two vertices and lies on the boundary of exactly two plaquettes.
+Thus, for a connected closed surface, there are $V-1$ independent star operators and $F-1$ independent plaquette operators.
+
+If the graph $G$ has $V$ vertices, $E$ edges, and $F$ plaquettes, the full Hilbert space is $2^E$-dimensional,
+while there are $2^{V-1}\cdot 2^{F-1}$ distinct simultaneous eigenspaces.
+Hence each such eigenspace has dimension
+\[
+	\frac{2^E}{2^{V+F-2}} = 2^{E-V-F+2} = 2^{2-\chi},
+\]
+where $\chi := V-E+F$ is the Euler characteristic of $\Sigma$.
+For a genus-$g$ surface, $\chi=2-2g$, so in particular the ground-state sector,
+corresponding to $A_s=B_p=+1$ for all $s, p$, is $4^g$-fold degenerate.\footnote{%
+While the paper only states this result for genus-$g$ surfaces,
+the definition of genuses depends on the surface being orientable.
+If the surface is non-orientable, like the Klein bottle for example,
+then the genus is ill-defined, but the Euler characteristic formula still applies.
+In fact, transporting an $e\times m$ dyon along a non-orientable loop yields a negative phase change!
+}
+
+\subsection{Ground states}
+Suppose $\ket{\Psi}$ is a ground state of the system, meaning $A_s \ket{\Psi} = B_p \ket{\Psi} = \ket{\Psi}$.
+Let us work in the $\sigma^z$-basis, and label each classical spin configuration as $s: j \mapsto s_j \in \{\pm 1\}$.
+The plaquette operator condition is met for classical configurations satisfying $B_p\ket{s} = w_p(s)\ket{s} = \ket{s}$,
+where $w_p(s) := \prod_{j \in \bdry{p}} s_j$ is called the \emph{vortex} on plaquette $p$.
+Then, the ground state is described as
+\[
+	\ket{\Psi} = \sum_{s : \forall p.\; w_p(s) = +1} c_s \ket{s},
+\]
+that is, a superposition of vortex-less configurations.
+
+If a star operator $A_s$ acts on the classical state $\ket{s}$,
+then the resulting state is also a classical configuration, with spins on $\star{j}$ flipped.
+Therefore, $c_s$ and $c_{s'}$ must be equal if $s$ and $s'$ can be connected via star operators, i.e.,
+if they lie in a common orbit of the star operators,
+or in topological terms, a common \emph{cohomology class} of the $\mathbb{Z}_2$ 1-form gauge fields over $\Sigma$.
+
+To decipher the last part, we define the terms in steps.
+A \emph{G 1-form} at a point $p \in \Sigma$, for an abelian group $G$,
+is a function $A$ that takes a tangent vector at $p$ and outputs a scalar in $G$.
+A \emph{1-form field} assigns a 1-form to each point in $\Sigma$.
+A \emph{0-form field} is a scalar field $C : \Sigma \rightarrow G$,
+whose \emph{differential} is defined as $dC := \partial_\mu C dx^\mu$ (for a given coordinate system $x^\mu$).
+A \emph{1-form gauge field} is the equivalence class of 1-forms such that $A \sim B \iff \exists C.\; B = A + dC$.
+Thus, the cohomology $H^1(\Sigma, G)$ is the classification of $G$ 1-form gauge fields.
+On a cellularized graph, 1-forms are defined on each edge,
+and the differential is defined as $dC(\langle i, j\rangle) := C(j) - C(i).$\footnote{%
+The group $\mathbb{Z}_2 = \{\pm 1\}$ is defined multiplicatively, meaning
+$dC(\langle i, j\rangle) = C(j) \cdot C(i)^{-1} = C(i) C(j)$.
+}
+
+In case of the toric code on a genus-$g$ closed surface,
+the cohomology group is given as $H^1(\Sigma_g, \mathbb{Z}_2) \cong (\mathbb{Z}_2)^{2g}$,
+which has $4^g$ elements as expected.
+This can be intuitively explained by the 2 incontractible loops per genus.
+In fact the corresponding \emph{electric Wilson loop operators}
+\[
+	W_l^{(e)} := \prod_{j \in l} \sigma_j^z,
+\]
+defined the loop $l$ connects sites along the edges,
+commute with every $A_s$, meaning these $2g$ operators allow us
+to traverse the degenerate states starting from any one of them.
+
+The above derivation could have started with the $\sigma^x$ basis,
+in which case the \emph{magnetic Wilson loop operators}
+\[
+	W_{l^*}^{(m)} := \prod_{j \in l^*} \sigma_j^x
+\]
+allow the traversal, where the loop $l^*$ connects plaquette centers penetrating the edges.
+In fact, if $l \cap l^*$ contains a single site, then $W_l^{(e)}$ and $W_{l^*}^{(m)}$ anticommute,
+acting as Pauli operators $X$ and $Z$ on the fourfold degenerate states traversed by them.
+
+\subsection{Excitations}
+Different energy eigenspaces can be traversed using non-loop path operators.
+That is, for a curve $l$ with boundaries, the electric path operator $W_l^{(e)}$ (defined similarly)
+commutes with all star operators except those at the boundaries, with which it anticommutes.
+Thus, $A_l$ negates the eigenvalues of the star operators at its endpoints,
+raising the energy by $2J_e$.
+One says that a site with $A_s = -1$ has an \emph{electric charge} at that site,
+and thus interpret $J_e$ as the excitation energy of a single electric charge.
+(An electric charge cannot be created in isolation, however; it is simply a mental description.)
+Similarly, the magnetic path operator $W_{l^*}^{(m)}$ negates the eigenvalues of $B_p$ at its endpoints,
+creating two vortices or \emph{magnetic charges}, each with excitation energy $J_m$.
 
 \printbibliography
 \end{document}
