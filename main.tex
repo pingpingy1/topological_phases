@@ -625,8 +625,9 @@ we label the corresponding Majorana modes:
 Because the coefficients are exponentially localized at one of the boundaries,
 we also call these the ``boundary modes''.
 These approximate boundary operators combine into a single Dirac fermion $a := b_l + ib_r$.
-Again, the above sequences $\left\{u_j\right\}$ are not exact eigenvectors of $A$ for finite $N$;
-they are approximations for the low-energy modes, should they exist.
+Again, it should be stressed that these boundary modes are exact zero modes only in the semi-infinite chain limit;
+for finite values of $N$, the above sequences $\left\{u_j\right\}$ are not exact eigenvectors of $A$.
+The logic is that if low-energy modes exist, then those eigenstates should be approximated by these boundary modes for sufficiently large $N$.
 
 Since these boundary operators are not exact zero modes,
 the low-energy subspace should obtain a nontrivial effective Hamiltonian.
@@ -823,7 +824,9 @@ $\eta_k$ satisfies the anticommutation relations.
 If $\begin{pmatrix} u_k \\ iv_k \end{pmatrix}$ and $\begin{pmatrix} -iv_k \\ u_k \end{pmatrix}$
 are the unit eigenvectors with respective eigenvalues
 \[
-    \mp E(k) := \mp \sqrt{w^2 + \left(\frac{\mu}{2}\right)^2+w\mu\cos ka},
+    \mp E(k) := \mp \sqrt{
+        \left(w\cos ka + \frac{\mu}{2}\right)^2
+        + \left(\Delta\sin ka\right)^2},
 \]
 then the Hamiltonian reduces to
 \[
@@ -950,7 +953,7 @@ so if $d_z(0)$ and $d_z(\pi/a)$ have the same sign, the curve must wind the orig
 if different, an odd number of times.
 Thus, $\nu := \mathrm{sign}\left(d_z(0) d_z\left(\frac{\pi}{a}\right)\right)$ classifies all curves in this way.
 When $|\mu| \neq 2|w|$, the product does not vanish and $\nu$ is well-defined.
-In fact, explicit calculation yields $\nu = \mathrm{sign}\left(\left(\frac{\mu}{4}\right)^2 - w^2\right)$,
+In fact, explicit calculation yields $\nu = \mathrm{sign}\left(\left(\frac{\mu}{2}\right)^2 - w^2\right)$,
 so the boundary modes exist precisely when $\nu = -1$.
 Thus, this definition of $\nu$ correctly distinguishes the topological and trivial phases of the Kitaev chain.
 
