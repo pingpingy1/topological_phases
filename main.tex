@@ -1215,6 +1215,61 @@ and thus interpret $2J_e$ as the excitation energy of a single electric charge.
 Similarly, the magnetic path operator $W_{l^*}^{(m)}$ negates the eigenvalues of $B_p$ at its endpoints,
 creating two vortices or \emph{magnetic charges}, each with excitation energy $2J_m$.
 
+% =========================================
+\section{Abelian anyons and quasiparticle statistics}
+Recall from undergraduate quantum mechanics that, in three dimensions,
+the indistinguishability of identical particles constrains the wavefunction
+to be either symmetric or antisymmetric under exchange.
+Let us use a simple game to motivate what changes in two dimensions.
+Imagine that two well-separated quasiparticles are prepared in with definite positions,
+and an adversary transports them along some paths to exchange their positions.
+If the system remains gapped throughout the process and the transport is adiabatic,
+then small deformations of the paths does not modify the net effect of this exchange.
+Hence, the resulting transformation depends only on the homotopy class of the paths.
+If the particles have long-range interactions, it would incur an additional,
+path-dependent phase to the effect.
+
+For two particles in three dimensions, exchanging them twice is
+topologically equivalent to doing nothing,
+as the two closed paths can be continuously untangled and shrunk to zero.
+Therefore, if one exchange acts on a one-dimensional state space
+by a phase $e^{i\theta}$, performing it twice gives the identity and $e^{2i\theta}=1$.
+The exchange phase is consequently restricted to $+1$ for bosons or $-1$ for fermions.
+(Enter spin-statistics theorem... Wrong room? Okay...)\footnote{%
+There is of course the issue of a single exchange yielding a nontrivial operator squaring to one,
+which does not alter any physically measurable value,
+but what good is a nonmeasurable degree of freedom?
+In all seriousness, I have no idea how to eliminate this case in a foolproof manner,
+but various chatbots informed me that those internal degrees of freedom
+can be dealt with as additional labels to either bosons or fermions.
+\hwnote{Huh?}
+}
+
+In two dimensions, exchanging two particles twice is instead homotopic to
+winding one particle once around the other,
+and this path cannot generally be untangled.
+The winding number of the path is a complete homotopic invariant for two particles;
+for many particles, the full braiding must be considered.
+Thus, a two-dimensional quasiparticle can acquire an exchange phase
+$e^{i\theta}$ for a general value of $\theta$.
+Such quasiparticles are \emph{Abelian anyons}.
+
+The winding experiment also makes sense when the two particles are indistinguishable,
+say $a$ and $b$.
+An exchange would yield a nontrivial \emph{braiding operator} $R_{ab}$,
+as a single exchange yields a measurably distinct state.\footnote{%
+For non-abelian anyons, the state space of two particles is (apparently)
+not the simple tensor product of the individual spaces.
+It defines \emph{fusion spaces} and something something...
+\hwnote{Help!}
+}
+The full winding $R_{ba} \cdot R_{ab}$, called their \emph{mutual statistics},
+should then be a phase factor $e^{i\theta}$.\footnote{%
+Again, the unmeasurable degree of freedom issue appears here...
+\hwnote{Help!}
+}
+In the toric code, for example, the $e$ and $m$ particles
+have a nontrivial mutual statistics of $-1$.
+
 \printbibliography
 \end{document}
-
