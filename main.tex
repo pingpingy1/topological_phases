@@ -7,6 +7,7 @@
 \usepackage{amsthm}
 \usepackage{enumitem}
 \usepackage{mathrsfs}
+\usepackage[bb=libus]{mathalpha}
 
 \usepackage{tikz}
 \usepackage{xcolor}
@@ -1220,7 +1221,7 @@ creating two vortices or \emph{magnetic charges}, each with excitation energy $2
 Recall from undergraduate quantum mechanics that, in three dimensions,
 the indistinguishability of identical particles constrains the wavefunction
 to be either symmetric or antisymmetric under exchange.
-Let us use a simple game to motivate what changes in two dimensions.
+Let us use a simple game to motivate why that is and what changes in two dimensions.
 Imagine that two well-separated quasiparticles are prepared in with definite positions,
 and an adversary transports them along some paths to exchange their positions.
 If the system remains gapped throughout the process and the transport is adiabatic,
@@ -1229,20 +1230,51 @@ Hence, the resulting transformation depends only on the homotopy class of the pa
 If the particles have long-range interactions, it would incur an additional,
 path-dependent phase to the effect.
 
+The configuration of two particles is labeled by
+\[
+    F_2(\mathbb{R}^3) := \left\{
+        (\mathbb{x}, \mathbb{y}) \in \mathbb{R}^3 \times \mathbb{R}^3 |
+        \mathbb{x} \neq \mathbb{y}
+    \right\}.
+\]
+The indistinguishability of particles means the exchange
+$(\mathbb{x}, \mathbb{y}) \mapsto (\mathbb{y}, \mathbb{x})$
+correspond to the same state, meaning the unordered configuration space is
+\[
+    C_2(\mathbb{R}^3) := F_2(\mathbb{R}^3) / S_2.
+\]
+This space can be labeled with the center-of-mass coordinates
+\[
+    \mathbb{r}_{CM} = \frac{\mathbb{x} + \mathbb{y}}{2},\quad
+    \mathbb{r}_{rel} = \mathbb{y} - \mathbb{x},
+\]
+with the exchange identification given by $\mathbb{r}_{rel} \sim -\mathbb{r}_{rel}$.
+Thus, the configuration space is identified as
+\[
+    C_2(\mathbb{R}^3)
+    \simeq \mathbb{R}^3 \times \frac{\mathbb{R}^3 \setminus \{0\}}{\sim}
+    \simeq \mathbb{R}^3 \times \mathbb{RP}^2 \times \mathbb{R}_{>0}.
+\]
+
 For two particles in three dimensions, exchanging them twice is
 topologically equivalent to doing nothing,
 as the two closed paths can be continuously untangled and shrunk to zero.
+(In fact, the fundamental group of the configuration space is given by
+\[
+    \pi_1(C_2(\mathbb{R}^3)) \simeq \mathbb{Z}_2,
+\]
+with $+1$ equivalent to no-op and $-1$ to a single exchange of the particles.)
 Therefore, if one exchange acts on a one-dimensional state space
 by a phase $e^{i\theta}$, performing it twice gives the identity and $e^{2i\theta}=1$.
 The exchange phase is consequently restricted to $+1$ for bosons or $-1$ for fermions.
 (Enter spin-statistics theorem... Wrong room? Okay...)\footnote{%
-There is of course the issue of a single exchange yielding a nontrivial operator squaring to one,
-which does not alter any physically measurable value,
-but what good is a nonmeasurable degree of freedom?
-In all seriousness, I have no idea how to eliminate this case in a foolproof manner,
-but various chatbots informed me that those internal degrees of freedom
-can be dealt with as additional labels to either bosons or fermions.
-\hwnote{Huh?}
+For particles with internal degrees of freedom like spin,
+the state space may be multidimensional and the exchange would be represented
+by a unitary operator $U$ such that $U^2 = 1$.
+However, since the eigenvalues of $U$ would then be restricted to $\pm 1$,
+the internal state space would be decomposed into the eigenspaces of $U$,
+some of them symmetric and some antisymmetric under particle exchange.
+Thus, internal degrees of freedom do not allow arbitrary exchange phases in three dimensions.
 }
 
 In two dimensions, exchanging two particles twice is instead homotopic to
@@ -1264,10 +1296,7 @@ It defines \emph{fusion spaces} and something something...
 \hwnote{Help!}
 }
 The full winding $R_{ba} \cdot R_{ab}$, called their \emph{mutual statistics},
-should then be a phase factor $e^{i\theta}$.\footnote{%
-Again, the unmeasurable degree of freedom issue appears here...
-\hwnote{Help!}
-}
+should then be a phase factor $e^{i\theta}$.
 In the toric code, for example, the $e$ and $m$ particles
 have a nontrivial mutual statistics of $-1$.
 
