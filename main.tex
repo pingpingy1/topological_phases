@@ -1434,5 +1434,92 @@ the Hamiltonian is expressed as:
 with the physical subspace characterized by the gauge condition $\Tilde\mu_v^x\Tilde A_v = +1$ at every vertex $v$.
 In fact, on the physical subspace, one writes $A_v = \Tilde A_v = \Tilde\mu_v$.
 
+\section{The honeycomb lattice model}
+The honeycomb model has spin-aligning interactions along each bond,
+with the direction of the bond determining the type of the Pauli operator.
+(See equation~(5.1) of the paper.)
+The plaquette operators $W_p$ (see equation~(5.2)) all commute with the Hamiltonian,
+but there are twice as many plaquettes as there are vertices or spins.
+Hence, even if we decompose the Hilbert space labeled by the vortex configurations
+(i.e., into the simultaneous eigenspaces of $W_p$),
+this only constrains half of all spins in each sector.
+
+\subsection{A (redundant) representation of a spin by 4 Majorana operators}
+In the honeycomb model where $\sigma^\alpha\; (\alpha = x. y, z)$ all appear as distinct interaction terms,
+it is more convenient to write the Pauli operators using four Majoranas $c, b^\alpha$
+instead of the two Majoranas as in the Jordan-Wigner transformation:
+\[
+    \Tilde\sigma^\alpha := ib^\alpha c.
+\]
+Comparing the two-dimensional spin space and the four-dimensional Fock space,
+the physical subspace can be defined by the constraint
+\[
+    D := b^x b^y b^z c = 1.
+\]
+The soundness of this representation is given by the two observations:
+\begin{enumerate}
+    \item $[\Tilde\sigma^\alpha, D] = 0$,
+        implying that the physical subspace is left invariant.
+    \item $\Tilde\sigma^i\Tilde\sigma^j = b^i b^j = D \cdot i\varepsilon_{ijk} \Tilde\sigma^k$,
+        meaning the algebraic relations hold on the physical subspace.
+\end{enumerate}
+Thus, we identify the actual spin operators $\sigma^\alpha$ with the restricted action of $\Tilde\sigma^\alpha$ on the subspace $D = 1$.
+
+\subsection{Solving the Honeycomb Model using Majoranas}
+Now suppose we rewrite every spin operator $\sigma_j^\alpha$ with four Majoranas each, i.e., $c_j, b_j^\alpha$.
+The $2^N$-dimensional Hilbert space is enlarged to the $4^N$-dimensional Fock space,
+with the physical subspace defined by the gauge conditions:
+\[
+    D_j := b_j^x b_j^y b_j^z c_j = +1.
+\]
+Equivalently, we define the projection operator onto the physical subspace:
+\[
+    \Pi := \prod_j \left(\frac{1+D_j}{2}\right).
+\]
+This allows us to rewrite the Hamiltonian as:
+\[
+    H = \frac{i}{4} \sum_{\langle j, k\rangle} A_{jk} c_j c_k\quad\text{with}\quad
+    A_{jk} = 2J_{\alpha(j,k)} (ib_j^{\alpha(j,k)}b_k^{\alpha(j,k)}),
+\]
+where $\alpha(j,k)$ denotes the orientation of the edge $\langle j, k\rangle$.
+Despite the fact that $A_{jk}$ is operator-valued instead of components of a real skew-symmetric matrix,
+each operator $b_j^\alpha$ appears exactly once in the Hamiltonian.
+This means that defining $u_{jk} := ib_j^{\alpha(j,k)}b_k^{\alpha(j,k)}$,
+every $u_{jk}$ commute with each other as well as with the Hamiltonian.
+Thus, every configuration of $u_{jk} = \pm 1$ corresponds to a distinct, pairwise orthogonal
+subspace of the full Fock space.
+On a given subspace, then, $A_{jk}$ is truly a constant and the Hamiltonian becomes a quadratic Majorana system,
+just like the one we discussed before!
+
+Moreover, a choice of the $u_{jk}$ configuration necessarily defines the vortex configuration:
+\[
+    W_p = \prod_{j \in \partial p} D_j \cdot \prod_{\langle j, k\rangle \in \partial p} u_{jk},
+\]
+with $\langle j, k\rangle$ ordered from the even sublattice to the odd sublattice
+(with a bipartite convention previously defined).
+Thus, the search for the ground state could be reduced to
+minimizing the quadratic Majorana energy over all vortex and $u_{jk}$ configurations,
+ignoring the fact that there are enormously many possible configurations.
+Fortunately, Lieb's theorem tells us that the ground state has no vortices, i.e., $W_p = +1$.
+
+\subsection{Fermionic spectrum in the honeycomb lattice model}
+In the vortex-less subspace, we can systematically choose
+\[
+    u_{jk} = \begin{cases}
+        +1 & (j \in \text{Even sublattice}) \\
+        -1 & (j \in \text{Odd sublattice})
+    \end{cases}
+\]
+and attempt to diagonalize the quadratic Hamiltonian.
+Exploiting the translational symmetry of the system,
+we would expect a momentum-dependent dispersion relation
+\[
+    \epsilon(\vec{q}) = \pm |f(\vec{q})|
+\]
+for some complex function $f(\vec{q})$ that depends on the parameters $J_\alpha$.
+A careful derivation yields the phase diagram in figure~(5.3) of the paper.
+A mathematical criterion for the B phase is that $f(\vec{q})$ has two zeros,
+which approach each other and vanish at the phase boundary.
+
 \printbibliography
 \end{document}
