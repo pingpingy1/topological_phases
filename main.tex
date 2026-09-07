@@ -1284,7 +1284,7 @@ The winding number of the path is a complete homotopic invariant for two particl
 for many particles, the full braiding must be considered.
 Thus, a two-dimensional quasiparticle can acquire an exchange phase
 $e^{i\theta}$ for a general value of $\theta$.
-Such quasiparticles are \emph{Abelian anyons}.
+Quasiparticles whose winding act as phases in this way are called \emph{Abelian anyons}.
 
 The winding experiment also makes sense when the two particles are indistinguishable,
 say $a$ and $b$.
@@ -1299,6 +1299,140 @@ The full winding $R_{ba} \cdot R_{ab}$, called their \emph{mutual statistics},
 should then be a phase factor $e^{i\theta}$.
 In the toric code, for example, the $e$ and $m$ particles
 have a nontrivial mutual statistics of $-1$.
+
+\subsection{Superselection sectors and fusion rules}
+Two (composite) particles are defined to be \emph{of the same type} iff
+a operator defined on a finite region can turn one into the other.
+For example, two $e$ particles are equivalent to no particle,
+as a string operator connecting the two can annihilate them.
+States corresponding to the different particle types in this context
+are called the \emph{superselection sectors}.\footnote{%
+The name is a generalization of the \emph{selection sector},
+where two states $\ket{\psi_1}$ and $\ket{\psi_2}$ are separated by a selection rule
+if $\braket{\psi_1 | H | \psi_2} = 0$.
+In this sense, they are separated by a superselection rule
+if $\braket{\psi_1 | A | \psi_2} = 0$ for all operators with a bounded support.
+}
+With $1$ denoting the vacuum sector, one uses the notation $e\times e = 1$
+to indicate that two $e$ particles are equivalent to vacuum;
+such statements are called \emph{fusion rules}.
+
+\subsection{Mutual statistics implies degeneracy on the torus}
+Suppose two particles $e$ and $m$ with mutual statistics $-1$ exist on a genus-$g$ surface.
+This fact alone, with no reference to the underlying model,
+implies an at least $4^g$-fold degeneracy of the vacuum sector.
+To prove this fact, let us label the $2g$ nontrivial loops on the surface as $1, \dots, 2g$.
+Let $X$ and $Z$ each denote the operator that repsectively creates a pair of $e$ or $m$ particles,
+transports one of the particles around loop $1$ or $2$, and annihilates the pair.
+It can be shown that the operator $Z^{-1}X^{-1}ZX$
+can be deformed into a single winding between $e$ and $m$,
+preceeded by the pair creations and succeeded by annihilations.
+\hwnote{Why?}
+That is,
+\[
+    Z^{-1}X^{-1}ZX = -1 \Leftrightarrow \{X,Z\} = 0.
+\]
+Thus, these two non-commuting operators imply an at least 4-fold degeneracy of each sector.
+Applying this argument the other $g-1$ loop pairs as well,
+we find an at least $4^g$-fold degeneracy.
+The pairs of loops should intersect at an odd number of points without tangents,
+which is homotopically well-defined.
+
+\subsection{The toric code in a field: perturbation analysis}
+Applying a weak uniform magnetic field, one obtains the Hamiltonian:
+\[
+    H = -J_e \sum_s A_s - J_m \sum_p B_p - \sum_j (h_x \sigma_j^x + h_z \sigma_j^z).
+\]
+This destroys the exact solvability of the model, but it allows the particles to hop around the graph.
+In fact, in the tight-binding limit (i.e., a single term in the Feshbach series),
+the energy of a single particle (in the appropriate sense as before)
+is given by the cosine dispersion:
+\[
+    \epsilon_e(q_x, q_y) \approx 2J_e - 2h_z (\cos q_x a + \cos q_y a)
+\]
+\[
+    \epsilon_m(q_x, q_y) \approx 2J_m - 2h_x (\cos q_x a + \cos q_y a)
+\]
+(The $h_x$ field does not affect $\epsilon_e$ and vice versa,
+as the $\sigma_j^x$ operator acting on a state with two $e$ particles
+creates two $m$ particles, leaving the sector of our interest.)
+
+In the case these fields are strong, the topological phase is destroyed,
+and the system becomes polarized along the field.
+This implies a phase transition between the topological phase and the paramagnetic phase.
+Approaching this transition from the topological phase,
+increasing $h_z$ gradually creates more and more $e$ particles,
+which is refered to as \emph{Bose condensation} of the charges,
+or of the vortices in the $h_x$ case.
+However, simply rotating the field in the paramagnetic phase does not incur a phase transition.
+Hence, the charge condensate and the vortex condensate phases are equivalent.
+
+\subsection{Robustness of the topological degeneracy}
+Recall that in the zero-field limit, the Wilson loop operators traverse between the degenerate ground states.
+Thus, a similar analysis to that of section~\ref{sec:ising} lets us find
+the ground state energy splitting to be
+\[
+    \Delta E \sim J e^{-L/\xi}\quad \text{with}\quad
+    \xi^{-1} \sim \ln \frac{J}{h}
+\]
+where $L$ is the length of the loop, with appropriate subscripts for $J, h$.
+In fact, to lowest order, the effective Hamiltonian is a linear combination of the
+loop operators $X_i$ and $Z_i$,
+as higher-order terms are exponentially suppressed.
+However, it should be noted that the edge-localized operators in the Majorana chain
+and the noncontractible Wilson loops in the toric code
+are physically distinct mechanisms for creating topological degeneracy.
+The relevant fact is that in either case, local perturbation cannot distinguish
+the ground states at the lowest order.
+
+\subsection{Emergent symmetry: gauge formulation}
+\hwnote{Why introduce gauge symmetry at all?}
+On each vertex, one introduces an extra spin $\mu_v$ in the triplet state:
+\[
+    \frac{1}{\sqrt{2}}(\ket{\uparrow} + \ket{\downarrow}),
+\]
+that is, $\mu_v^x \ket{\Psi} = \ket{\Psi}$.
+Our goal is to utilize this redundancy of representation
+to describe why there are (approximate) symmetry operators with nonlocal support
+that generate (exponentially suppressed) degeneracy.
+
+We define the \emph{gauge transformations} as those generated by
+\[
+    G_v := \mu_v^x \prod_{\langle u, v\rangle} \sigma_{uv}^x.
+\]
+One can find that while $\mu_v^x$ and $\sigma_{uv}^x$ commute with $G_v$,
+$\mu_v^z$ and $\sigma_{uv}^z$ anticommute.
+We want to reformulate the Hamltonian using gauge-invariant terms.
+To that end, we define the following operators:
+\[
+    \begin{cases}
+        \Tilde\sigma_{uv}^x &= \sigma_{uv}^x \\
+        \Tilde\sigma_{uv}^z &= \mu_u^z \sigma_{uv}^z \mu_v^z \\
+        \Tilde\mu_v^x       &= \mu_v^x \prod_{\langle u, v\rangle} \sigma_{uv}^x \\
+        \Tilde\mu_v^z       &= \mu_v^z
+    \end{cases}
+    \Leftrightarrow
+    \begin{cases}
+        \Tilde\sigma_{uv}^x &= \sigma_{uv}^x \\
+        \Tilde\sigma_{uv}^z &= \mu_u^z \sigma_{uv}^z \mu_v^z \\
+        \Tilde\mu_v^x       &= \mu_v^x \prod_{\langle u, v\rangle} \sigma_{uv}^x \\
+        \Tilde\mu_v^z       &= \mu_v^z
+    \end{cases}
+\]
+Among the operators with tilde, $\Tilde\mu_v^z$ is negated by $G_v$,
+while the other three are gauge invariant.
+The $\Tilde\mu_v^x$, in particular, is defined such that
+the $\Tilde\mu$ and $\Tilde\sigma$ operators define separate Pauli algebras.
+Defining the gauge-invariant star operators $\Tilde A_s$ and plaquette operators $\Tilde B_p$,
+the Hamiltonian is expressed as:
+\[
+    \Tilde H = -J_e\sum_v\Tilde A_v - J_m\sum_p\Tilde B_p
+    -\sum_{\langle u, v\rangle}\left(
+        h_x\Tilde\sigma_{uv}^x + h_z\Tilde\mu_u^z\Tilde\sigma_{uv}^z\mu_v^z
+    \right),
+\]
+with the physical subspace characterized by the gauge condition $\Tilde\mu_v^x\Tilde A_v = +1$ at every vertex $v$.
+In fact, on the physical subspace, one writes $A_v = \Tilde A_v = \Tilde\mu_v$.
 
 \printbibliography
 \end{document}
