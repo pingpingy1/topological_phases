@@ -1386,7 +1386,6 @@ The relevant fact is that in either case, local perturbation cannot distinguish
 the ground states at the lowest order.
 
 \subsection{Emergent symmetry: gauge formulation}
-\hwnote{Why introduce gauge symmetry at all?}
 On each vertex, one introduces an extra spin $\mu_v$ in the triplet state:
 \[
     \frac{1}{\sqrt{2}}(\ket{\uparrow} + \ket{\downarrow}),
@@ -1520,6 +1519,30 @@ for some complex function $f(\vec{q})$ that depends on the parameters $J_\alpha$
 A careful derivation yields the phase diagram in figure~(5.3) of the paper.
 A mathematical criterion for the B phase is that $f(\vec{q})$ has two zeros,
 which approach each other and vanish at the phase boundary.
+
+\subsection{Quasiparticle statistics in the gapped phase}
+The particle statistics of the gapped phases can be discussed using perturbative analysis.
+Specifically, consider the $A_z$ phase, where $J_z \gg J_x, J_y$.
+The $\sigma_i^z \sigma_j^z$ terms incur a large energy cost when spins are not aligned in the $z$ bonds.
+Thus, for low-energy states, one may reasonably consider the sector where the $z$-bond dimers
+are all in spin-aligned states, labeled $\ket{\Uparrow}$ and $\ket{\Downarrow}$.
+These dimers can be understood as lying on the edges of a rectangular lattice,
+with plaquettes and vertices corresponding to hexagons on alternating rows.
+The Feshbach expansion yields a nonconstant term at the fourth order, given by:
+\[
+    H_{eff} = \text{const.} - \frac{J_x J_y}{16J_z^3} \sum_p Q_p,
+\]
+where the square plaquette operator is given as
+\[
+    Q_p = \sigma_{p1}^y \sigma_{p2}^x \sigma_{p3}^y \sigma_{p4}^x.
+\]
+Appropriate rotations and adjustments yield the toric code system.
+\hwnote{Do this calculation explicitly! (See also:~\cite{kitaev_anyons})}
+Thus, excitations in this phase are precisely the $e$ and $m$ particles,
+or more precisely, the superselection sectors follow the same fusion rules as the toric code.
+Vortices in the even or odd rows correspond to the $e$ and $m$ particles, respectively,
+The $e \times m$ sector corresponds to the fermion sector $ic_i c_j$,
+though a single $e \times m$ particle and a single fermion state are not exactly the same.
 
 \printbibliography
 \end{document}
